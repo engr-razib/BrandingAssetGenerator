@@ -91,18 +91,18 @@ const App: React.FC = () => {
   }, [generatedImages, generatorType, lastFormData]);
 
   return (
-    <div className="bg-dark-bg min-h-screen text-dark-text-primary font-sans">
+    <div className="bg-dark-bg min-h-screen text-dark-text-primary font-sans ">
       <header className="bg-dark-surface p-4 border-b border-dark-border">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold">Branding Asset Generator</h1>
         </div>
       </header>
-      <main className="container mx-auto p-4 md:p-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 space-y-6">
+      <main className="container mx-auto p-2 md:p-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="lg:col-span-1 space-y-6 border border-dark-border  rounded-lg p-4 ">
             <div>
               <h2 className="text-xl font-semibold text-dark-text-primary mb-2">1. Choose Type</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                 {Object.values(GeneratorType).map(type => (
                   <button
                     key={type}
@@ -121,7 +121,7 @@ const App: React.FC = () => {
               isLoading={isLoading}
             />
           </div>
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <ImageOutput
               images={generatedImages}
               isLoading={isLoading && generatedImages.length === 0}
@@ -132,9 +132,9 @@ const App: React.FC = () => {
           </div>
         </div>
       </main>
-      <footer className="text-center p-4 text-dark-text-secondary text-sm border-t border-dark-border mt-8">
+      {/* <footer className="text-center p-4 text-dark-text-secondary text-sm border-t border-dark-border mt-8">
         Powered by Google Gemini API
-      </footer>
+      </footer> */}
     </div>
   );
 };

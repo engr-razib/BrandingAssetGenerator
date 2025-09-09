@@ -101,6 +101,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ generatorType, onSubmit, 
 
   return (
     <form onSubmit={handleSubmit} className="bg-dark-surface p-6 rounded-lg space-y-6">
+      {isSubmitDisabled && !isLoading && <p className="text-xs text-center text-dark-text-secondary ">Please fill required fields and select at least one size.</p>}
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold text-dark-text-primary">2. Provide Details</h2>
         <Button type="button" onClick={handleAutoFill} className="py-1 px-3 text-sm bg-brand-secondary hover:bg-brand-primary">
@@ -118,7 +119,8 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ generatorType, onSubmit, 
         </div>
         <div className="space-y-4 max-h-[40vh] overflow-y-auto p-2 border border-dark-border rounded-md bg-dark-bg">
           {Object.entries(sizeOptions).map(([category, items]) => (
-            <details key={category} open>
+            // open
+            <details key={category} >
               <summary className="font-semibold text-dark-text-secondary cursor-pointer py-1">{category}</summary>
               <div className="grid grid-cols-1 gap-2 pt-2 pl-4">
                 {(items as any[]).map((item, index) => {
@@ -142,7 +144,7 @@ const GeneratorForm: React.FC<GeneratorFormProps> = ({ generatorType, onSubmit, 
       <Button type="submit" disabled={isSubmitDisabled} className="w-full">
         {isLoading ? 'Generating...' : 'Generate Images'}
       </Button>
-      {isSubmitDisabled && !isLoading && <p className="text-xs text-center text-dark-text-secondary mt-2">Please fill required fields and select at least one size.</p>}
+      
     </form>
   );
 };
